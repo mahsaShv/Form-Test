@@ -47,6 +47,7 @@ public class GetInformationActivity  extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_getinfo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -57,22 +58,30 @@ public class GetInformationActivity  extends AppCompatActivity {
         addressT = (TextView) findViewById(R.id.addressView);
         locT = (TextView) findViewById(R.id.locView);
 
+
+
+
+
+
+
         AsyncT2 asyncT2 = new AsyncT2(name , familyName, homeNum,phoneNum,address,gender,lat,longi,countDownLatch);
         asyncT2.execute();
         try {
             countDownLatch.wait();
             nameT.setText(name+" "+familyName);
-            genderT.setText(gender);
-            homeNumT.setText(homeNum);
-            phoneNumT.setText(phoneNum);
-            addressT.setText(address);
+            if (gender.equals("Male"))
+                genderT.setText("آقا");
+            else genderT.setText("خانم");
+            homeNumT.setText("شماره ثابت: "+homeNum);
+            phoneNumT.setText("شماره موبایل: "+phoneNum);
+            addressT.setText("آدرس: "+address);
             locT.setText("Location : "+lat+ " , "+ longi);
 
 
 
 
 
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
