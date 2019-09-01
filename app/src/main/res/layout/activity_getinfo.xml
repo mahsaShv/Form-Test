@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_marginTop="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+
+        <TextView
+            android:id="@+id/phoneNumView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+
+        <TextView
+            android:id="@+id/homeNumView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+
+        <TextView
+            android:id="@+id/addressView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+
+        <TextView
+            android:id="@+id/genderView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+        <TextView
+            android:id="@+id/locView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:layout_gravity="right"
+            />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
