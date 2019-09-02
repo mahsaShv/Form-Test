@@ -135,7 +135,7 @@ class AsyncT2 extends AsyncTask<Void, Void, Void> {
 //            String userCredentials = "989822222222:12345678";
 //            String basicAuth = "Basic " + new String(Base64.encode(userCredentials.getBytes(),Base64.DEFAULT));
 
-            final String basicAuth = "Basic " + Base64.encodeToString("989822222222:12345678".getBytes(), Base64.NO_WRAP);
+            final String basicAuth = "Basic " + Base64.encodeToString("09822222222:sana12345678".getBytes(), Base64.NO_WRAP);
 
 
 //            httpURLConnection.setRequestProperty ("Authorization", basicAuth);
