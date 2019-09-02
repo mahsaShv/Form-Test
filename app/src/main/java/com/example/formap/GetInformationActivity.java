@@ -24,7 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.CountDownLatch;
 
-public class GetInformationActivity  extends AppCompatActivity {
+public class GetInformationActivity  extends AppCompatActivity implements Observer{
 
     TextView nameT;
     TextView genderT;
@@ -41,7 +41,7 @@ public class GetInformationActivity  extends AppCompatActivity {
     String address;
     String lat;
     String longi;
-    CountDownLatch countDownLatch = new CountDownLatch(1);
+    NotificationCenter notificationCenter = new NotificationCenter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,20 +58,29 @@ public class GetInformationActivity  extends AppCompatActivity {
         addressT = (TextView) findViewById(R.id.addressView);
         locT = (TextView) findViewById(R.id.locView);
 
+        notificationCenter.register(this);
 
 
 
 
 
 
-        AsyncT2 asyncT2 = new AsyncT2(name , familyName, homeNum,phoneNum,address,gender,lat,longi,countDownLatch);
+
+        AsyncT2 asyncT2 = new AsyncT2(name , familyName, homeNum,phoneNum,address,gender,lat,longi, notificationCenter);
         asyncT2.execute();
+
+
+    }
+
+
+    @Override
+    public void update() {
         try {
-            countDownLatch.wait();
+//            countDownLatch.wait();
             nameT.setText(name+" "+familyName);
-            if (gender.equals("Male"))
-                genderT.setText("آقا");
-            else genderT.setText("خانم");
+//            if (gender.equals("Male"))
+//                genderT.setText("جنسیت : آقا");
+//            else genderT.setText("جنسیت : خانم");
             homeNumT.setText("شماره ثابت: "+homeNum);
             phoneNumT.setText("شماره موبایل: "+phoneNum);
             addressT.setText("آدرس: "+address);
@@ -84,11 +93,7 @@ public class GetInformationActivity  extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
-
-
 }
 
 
@@ -103,9 +108,9 @@ class AsyncT2 extends AsyncTask<Void, Void, Void> {
     HttpURLConnection httpURLConnection;
     String lat;
     String longi;
-    CountDownLatch countDownLatch;
+    NotificationCenter notificationCenter;
 
-    AsyncT2(String name, String familyName, String homeNum, String phoneNum, String address, String gender , String lat, String longi,CountDownLatch countDownLatch
+    AsyncT2(String name, String familyName, String homeNum, String phoneNum, String address, String gender , String lat, String longi,NotificationCenter notificationCenter
     ) {
         this.name = name;
         this.familyName = familyName;
@@ -115,7 +120,7 @@ class AsyncT2 extends AsyncTask<Void, Void, Void> {
         this.gender = gender;
         this.lat = lat;
         this.longi = longi;
-        this.countDownLatch = countDownLatch;
+        this.notificationCenter = notificationCenter;
     }
 
     @Override
@@ -166,7 +171,8 @@ class AsyncT2 extends AsyncTask<Void, Void, Void> {
             lat = person.getString("latitude");
 
             longi = person.getString("longitude");
-            countDownLatch.countDown();
+
+            notificationCenter.notifyy();
 
 
 
